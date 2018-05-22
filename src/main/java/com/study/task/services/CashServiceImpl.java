@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.locks.Lock;
@@ -18,7 +19,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 public class CashServiceImpl implements CashService {
 
     private final int UPDATE_CACHE_MAX_REQUESTS = 100;
-    private HashMap<String, String> cache = new HashMap<>(5);
+    private Map<String, String> cache = new HashMap<>(5);
     private AtomicInteger cacheRequestCounter = new AtomicInteger(0);
     private String fileName;
     private final ReadWriteLock readWriteLock = new ReentrantReadWriteLock();
@@ -62,6 +63,7 @@ public class CashServiceImpl implements CashService {
 
     private String getValueFromCache(String key) {
         if (cacheRequestCounter.incrementAndGet() == UPDATE_CACHE_MAX_REQUESTS) {
+            cacheRequestCounter.set(0);
             List<String[]> entries = readFromFile();
             updateCache(entries);
         }
