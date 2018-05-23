@@ -23,11 +23,11 @@ public class CashServiceImplTest {
     private final int READ_ITERATIONS = 1000000;
     private final int THREAD_NUMBERS = 100;
 
-    @Autowired
-    CashService cashService;
-
     private Map<String, String> expectedCacheVals = new HashMap<>();
     private AtomicInteger finishedThreadCounter = new AtomicInteger(0);
+
+    @Autowired
+    CashService cashService;
 
     /**
      * Method generate random list of key/value pairs, fix them in
@@ -41,7 +41,9 @@ public class CashServiceImplTest {
     }
 
     /**
-     * Method implement thread task
+     * Extracted values from cache until cache requests <= {@link #READ_ITERATIONS}.
+     * Then increase {@link #finishedThreadCounter}, because task ended.
+     * If all thread finished work, than wake main thread.
      */
     private void threadTask() {
         Set<String> keySet = expectedCacheVals.keySet();
@@ -72,7 +74,7 @@ public class CashServiceImplTest {
     }
 
     @Test
-    public void getValue() {
+    public void testCashService() {
         for (int i = 0; i < THREAD_NUMBERS; i++) {
             new Thread(this::threadTask).start();
         }
