@@ -1,4 +1,4 @@
-package com.study.task.services;
+package com.study.task.services.task1;
 
 import org.springframework.stereotype.Service;
 
@@ -58,12 +58,26 @@ public class CashServiceImpl implements CashService {
 
     @Override
     public String getValue(String key) {
-        return getValueFromCache(key);
+        String value = getValueFromCache(key);
+        cacheRequestCounter.incrementAndGet();
+        return value;
     }
 
+    /**
+     * Method extract value by key from cache.
+     * If cache obsolete, cache update
+     * @param key - key of key/value pair.
+     * @return - value from cache by key.
+     */
     private String getValueFromCache(String key) {
-        if (cacheRequestCounter.incrementAndGet() == UPDATE_CACHE_MAX_REQUESTS) {
+
+        if (cacheRequestCounter.get() == UPDATE_CACHE_MAX_REQUESTS) {
             cacheRequestCounter.set(0);
+            List<String[]> entries = readFromFile();
+            updateCache(entries);
+        }
+
+        if (cacheRequestCounter.get() == 0) {
             List<String[]> entries = readFromFile();
             updateCache(entries);
         }
@@ -88,7 +102,7 @@ public class CashServiceImpl implements CashService {
     }
 
     /**
-     * Function get value by key from cache.
+     * Method get value by key from cache.
      * @param key - key of entry.
      * @return - value of entry from cache.
      */
@@ -102,12 +116,5 @@ public class CashServiceImpl implements CashService {
         } finally {
             readLock.unlock();
         }
-    }
-
-    @Override
-    public String toString() {
-        return "CashServiceImpl{" +
-                "fileName='" + fileName + '\'' +
-                '}';
     }
 }

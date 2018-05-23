@@ -1,4 +1,4 @@
-package com.study.task.services;
+package com.study.task.services.task1;
 
 
 import java.io.FileNotFoundException;
@@ -57,9 +57,11 @@ public class EntrysGenerator {
      * @param wordLen - length of generated random word.
      * @param keyValNum - number of generated key-value pairs.
      * @param fileName - name of file where generated pairs will write.
+     * @return - array of key/value arrays. [[key, value], ...]
      */
-    public void generateAndWriteInFile(int wordLen, int keyValNum, String fileName) {
+    public String[][] generateAndWriteInFile(int wordLen, int keyValNum, String fileName) {
         String[][] entries = generateRandomKeyValue(wordLen, keyValNum);
         writeWordsInFile(entries, fileName);
+        return entries;
     }
 }

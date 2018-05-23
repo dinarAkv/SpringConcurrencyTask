@@ -11,7 +11,7 @@
     <context:component-scan base-package="com.study.task" />
     <!--<mvc:annotation-driven />-->
 
-    <bean id="cashService" class="com.study.task.services.CashServiceImpl">
+    <bean id="cashService" class="com.study.task.services.task1.CashServiceImpl">
         <constructor-arg value="keyVal.txt" />
     </bean>
 
