@@ -1,11 +1,8 @@
-package com.study.task.services.task2;
+package com.study.task.task2;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import java.math.BigInteger;
-import java.util.HashSet;
-import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import static org.junit.Assert.*;
@@ -27,20 +24,22 @@ public class SequenceServiceImplTest {
             sequenceService.next();
             requestsCounter++;
         }
+        System.out.println("end thread: " + finishedThreadsNum.get());
+        System.out.println("curval: " + sequenceService.curval());
+        finishedThreadsNum.incrementAndGet();
 
-        synchronized (this) {
-            this.notify();
+        if (finishedThreadsNum.get() == THREADS_NUM) {
+            synchronized (this) {
+                this.notify();
+            }
         }
-    }
-
-    @Before
-    public void prepareToTest() {
-
     }
 
     @Test
     public void testSequenceService() {
-        new Thread(this::threadTask).start();
+        for (int i = 0; i < THREADS_NUM; i++) {
+            new Thread(this::threadTask).start();
+        }
 
         synchronized (this) {
             try {
@@ -49,6 +48,8 @@ public class SequenceServiceImplTest {
                 e.printStackTrace();
             }
         }
+
+        assertTrue(sequenceService.curval().equals(EXPECTED_SEQUENCE_VAL) );
         System.out.println("end");
     }
 }

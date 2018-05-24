@@ -11,8 +11,42 @@
     <context:component-scan base-package="com.study.task" />
     <!--<mvc:annotation-driven />-->
 
-    <bean id="cashService" class="com.study.task.services.task1.CashServiceImpl">
+    <bean id="cashService" class="com.study.task.task1.CashServiceImpl">
         <constructor-arg value="keyVal.txt" />
     </bean>
+
+    <!-- Task3 -->
+
+    <!-- Qualifier. -->
+    <bean id="person1" class="com.study.task.task3.Person">
+        <property name="name" value="Jack" />
+        <property name="age" value="31" />
+    </bean>
+    <bean id="person2" class="com.study.task.task3.Person">
+        <property name="name" value="Alex" />
+        <property name="age" value="28" />
+    </bean>
+
+    <!-- Set order of constructor args by index. -->
+    <bean id="person3" class="com.study.task.task3.Person">
+        <constructor-arg index="0" name="age" value="31" />
+        <constructor-arg index="1" name="name" value="Jack" />
+    </bean>
+
+    <!-- Set order of constructor args by args type. -->
+    <bean id="person4" class="com.study.task.task3.Person">
+        <constructor-arg type="int" name="age" value="21" />
+        <constructor-arg type="java.lang.String" name="name" value="Maria" />
+        <constructor-arg type="boolean" name="isMan" value="false" />
+    </bean>
+
+    <!-- Find bean by type. -->
+
+    <bean class="com.study.task.task3.Country">
+        <property name="name" value="France" />
+        <property name="population" value="66900000" />
+    </bean>
+
+    <!--=======-->
 
 </beans>

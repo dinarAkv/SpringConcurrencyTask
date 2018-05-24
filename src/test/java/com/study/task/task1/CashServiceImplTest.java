@@ -1,4 +1,4 @@
-package com.study.task.services.task1;
+package com.study.task.task1;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,18 +16,15 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static org.junit.Assert.assertEquals;
 
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring/*"})
 public class CashServiceImplTest {
 
     private final int READ_ITERATIONS = 1000000;
     private final int THREAD_NUMBERS = 100;
 
+    private CashService cashService = new CashServiceImpl("keyVal.txt");
     private Map<String, String> expectedCacheVals = new HashMap<>();
     private AtomicInteger finishedThreadCounter = new AtomicInteger(0);
 
-    @Autowired
-    CashService cashService;
 
     /**
      * Method generate random list of key/value pairs, fix them in
@@ -40,11 +37,7 @@ public class CashServiceImplTest {
         Arrays.stream(entries).forEach(entry -> expectedCacheVals.put(entry[0], entry[1]));
     }
 
-    /**
-     * Extracted values from cache until cache requests <= {@link #READ_ITERATIONS}.
-     * Then increase {@link #finishedThreadCounter}, because task ended.
-     * If all thread finished work, than wake main thread.
-     */
+
     private void threadTask() {
         Set<String> keySet = expectedCacheVals.keySet();
         int requestCounter = 0;

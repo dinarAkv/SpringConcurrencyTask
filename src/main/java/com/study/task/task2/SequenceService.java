@@ -1,4 +1,4 @@
-package com.study.task.services.task2;
+package com.study.task.task2;
 
 import java.math.BigInteger;
 
