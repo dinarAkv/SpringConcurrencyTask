@@ -17,7 +17,6 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 @Service
 public class CashServiceImpl implements CashService {
-
     private final int UPDATE_CACHE_MAX_REQUESTS = 100;
     private Map<String, String> cache = new HashMap<>(5);
     private AtomicInteger cacheRequestCounter = new AtomicInteger(0);
@@ -48,11 +47,9 @@ public class CashServiceImpl implements CashService {
                 String[] keyVal = currentLine.split("-");
                 entries.add(keyVal);
             }
-
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return entries;
     }
 
@@ -70,7 +67,6 @@ public class CashServiceImpl implements CashService {
      * @return - value from cache by key.
      */
     private String getValueFromCache(String key) {
-
         if (cacheRequestCounter.get() == UPDATE_CACHE_MAX_REQUESTS) {
             cacheRequestCounter.set(0);
             List<String[]> entries = readFromFile();

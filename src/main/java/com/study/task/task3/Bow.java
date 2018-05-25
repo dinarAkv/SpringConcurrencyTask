@@ -12,12 +12,4 @@ public class Bow extends Weapon {
     public Bow(int fireDistance) {
         this.fireDistance = fireDistance;
     }
-
-    public int getFireDistance() {
-        return fireDistance;
-    }
-
-    public void setFireDistance(int fireDistance) {
-        this.fireDistance = fireDistance;
-    }
 }

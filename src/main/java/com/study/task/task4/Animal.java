@@ -6,7 +6,6 @@ public class Animal {
     private String kind;
     private int lifeExpectancyAvg;
 
-
     public Animal() {
         beanCreationCounter++;
     }

@@ -15,6 +15,4 @@ public class Car {
         this.year = year;
         this.cost = cost;
     }
-
-
 }

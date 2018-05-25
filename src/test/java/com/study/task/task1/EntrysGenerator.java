@@ -6,11 +6,10 @@ import java.io.PrintWriter;
 import java.util.Arrays;
 
 public class EntrysGenerator {
-
     /**
      * Method return random word with specified length.
      * @param length - number of characters in word.
-     * @return - random word/
+     * @return - random word.
      */
     private String getRandomWord(int length) {
         String r = "";
@@ -19,7 +18,6 @@ public class EntrysGenerator {
         }
         return r;
     }
-
 
     /**
      * Function generate key-value pairs of words.
@@ -34,7 +32,6 @@ public class EntrysGenerator {
         }
         return pairs;
     }
-
 
     /**
      * Method write key value pairs in file as pattern: key-value.

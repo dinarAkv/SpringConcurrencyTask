@@ -9,4 +9,7 @@ src/test/java/com/study/task/task(1-4).
 
 3. Конфигурация для бинов лежит в каталоге 
 src/test/resources/spring/spring-context.xml.                         
+Конфигурации grey-paper.xml, white-paper.xml в (src/test/resources/spring/) запускаются в зависимости
+от результата выполнения условия (использование аннотации 
+@Conditional).
                                  

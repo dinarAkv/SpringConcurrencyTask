@@ -1,7 +1,6 @@
 package com.study.task.task3;
 
 public class Weapon {
-
     private String name;
     private double cost;
 

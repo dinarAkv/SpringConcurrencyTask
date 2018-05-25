@@ -12,9 +12,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring/*"})
+@ContextConfiguration(locations = {"classpath:spring/spring-context.xml"})
 public class BeansThreadUnsafenessProof {
-
     private final int REQUESTS_NUM_FOR_THREAD = 1000000000;
     private final int THREADS_NUM = 1000;
     private final long EXPECTED_SEQUENCE_VAL = REQUESTS_NUM_FOR_THREAD * THREADS_NUM;
