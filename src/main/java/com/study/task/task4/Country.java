@@ -50,10 +50,10 @@ public class Country {
 
         Country otherCountry = (Country) obj;
 
-        if (!this.getName().equals(otherCountry.getName())) {
+        if (!this.name.equals(otherCountry.name)) {
             return false;
         }
-        if (this.getPopulation() != otherCountry.getPopulation()) {
+        if (this.population != otherCountry.population) {
             return false;
         }
 

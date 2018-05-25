@@ -21,16 +21,8 @@ public class Animal {
         return beanCreationCounter;
     }
 
-    public String getKind() {
-        return kind;
-    }
-
     public void setKind(String kind) {
         this.kind = kind;
-    }
-
-    public int getLifeExpactancyAvg() {
-        return lifeExpectancyAvg;
     }
 
     public void setLifeExpactancyAvg(int lifeExpactancyAvg) {

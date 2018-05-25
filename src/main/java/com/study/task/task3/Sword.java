@@ -18,20 +18,4 @@ public class Sword extends Weapon {
         this.length = length;
         this.steelMark = steelMark;
     }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public String getSteelMark() {
-        return steelMark;
-    }
-
-    public void setSteelMark(String steelMark) {
-        this.steelMark = steelMark;
-    }
 }

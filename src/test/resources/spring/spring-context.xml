@@ -52,6 +52,11 @@
         <property name="name" value="Funny stories"/>
         <property name="pages" value="89"/>
     </bean>
+
+    <!-- Proof thread unsafeness. -->
+    <bean name="object" class="com.study.task.task4.ThreadUnsafeSequence">
+        <constructor-arg name="counter" value="0" />
+    </bean>
     <!--======-->
 
 </beans>

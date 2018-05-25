@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:spring/*"})
+@ContextConfiguration(locations = {"classpath:spring/spring-context.xml"})
 public class SpringConflictsResolveTest {
 
     @Autowired
@@ -66,6 +66,15 @@ public class SpringConflictsResolveTest {
     @Test
     public void testPrimaryAnnotation() {
         assertTrue(sword instanceof Sword);
+    }
+
+    @Autowired
+    public Paper paper;
+
+    @Test
+    public void testConditionalBeanLoading() {
+        Paper expectedPaper = new Paper("White", "A4");
+        assertEquals(paper, expectedPaper);
     }
 
     @Autowired(required = false)

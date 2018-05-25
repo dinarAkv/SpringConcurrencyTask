@@ -26,24 +26,8 @@ public class Person {
         this.isMan = isMan;
     }
 
-    public boolean isMan() {
-        return isMan;
-    }
-
-    public void setMan(boolean man) {
-        isMan = man;
-    }
-
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getAge() {
-        return age;
     }
 
     public void setAge(int age) {
@@ -61,10 +45,10 @@ public class Person {
 
         Person otherPerson = (Person) obj;
 
-        if (!this.getName().equals(otherPerson.getName())) {
+        if (!this.name.equals(otherPerson.name)) {
             return false;
         }
-        if (this.getAge() != otherPerson.getAge()) {
+        if (this.age != otherPerson.age) {
             return false;
         }
 

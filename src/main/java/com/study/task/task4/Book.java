@@ -21,16 +21,8 @@ public class Book {
         return beanCreationCounter;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-
-    public int getPages() {
-        return pages;
     }
 
     public void setPages(int pages) {
