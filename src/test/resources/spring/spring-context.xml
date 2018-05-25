@@ -9,14 +9,9 @@
 	http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <context:component-scan base-package="com.study.task" />
-    <!--<mvc:annotation-driven />-->
 
-    <bean id="cashService" class="com.study.task.task1.CashServiceImpl">
-        <constructor-arg value="keyVal.txt" />
-    </bean>
 
     <!-- Task3 -->
-
     <!-- Qualifier. -->
     <bean id="person1" class="com.study.task.task3.Person">
         <property name="name" value="Jack" />
@@ -41,12 +36,22 @@
     </bean>
 
     <!-- Find bean by type. -->
-
     <bean class="com.study.task.task3.Country">
         <property name="name" value="France" />
         <property name="population" value="66900000" />
     </bean>
-
     <!--=======-->
+
+    <!-- Task4 -->
+    <bean name="animal1" class="com.study.task.task4.Animal">
+        <property name="kind" value="dog" />
+        <property name="lifeExpactancyAvg" value="10"/>
+    </bean>
+
+    <bean name="book1" class="com.study.task.task4.Book" scope="prototype">
+        <property name="name" value="Funny stories"/>
+        <property name="pages" value="89"/>
+    </bean>
+    <!--======-->
 
 </beans>
